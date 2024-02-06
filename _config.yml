@@ -2,17 +2,17 @@
 ## to customize your blog
 
 title: Stat 386 Blog
-description: "I did some data science.  Here's what I found out!" 
+description: "I did some data science. Here's what I found out!" 
 author: Spencer Wilson
 author_description: "Hi! I'm a guy typing words!" 
 
-url: https://spencer_scw.github.io ## change this to https://yourusername.github.io
+url: https://spencer-scw.github.io ## change this to https://yourusername.github.io
 baseurl: /386-blog ## change this to the name of your blog repository
 header_image: /assets/img/headerimg.jpg ## change your header image if you want
 
 ## Add your social media user names.  Github is required, the rest are optional
 social:
-    github:  spencer_scw
+    github:  spencer-scw
     twitter: 
     facebook: 
     email: skrewt@byu.edu
