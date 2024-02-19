@@ -16,6 +16,7 @@ For this tutorial I'll be using the [WOB api](https://wob.coppermind.net/api/). 
 ![WOB website](/assets/img/2024-12-19-wrapping-APIs/WOB-screenshot.png)
 
 This API offers six different endpoints:
+
 1. `/events`
 2. `/upcoming_events`
 3. `/tags`
@@ -30,7 +31,9 @@ Let's take a look at what we get when we use the `/random_post` endpoint:
 ```bash
 curl https://wob.coppermind.net/api/random_entry/?format=json
 ```
+
 returns
+
 ```json
 {
     "id":8128,
@@ -47,6 +50,7 @@ returns
         "text":"<p>So, a Radiant's blade. When it takes other forms, does it take on any different properties? So, like, if Kaladin beat someone with the butt of his Sylspear, would it still do something in regards to the soul?</p>"},
         {"speaker":"Brandon Sanderson",
         "text":"<p>Would he still hit the soul? That is theoretically possible to make happen. It requires a lot of work. That is theoretically possible.</p>"}],"note":""}
+        
 ```
 
 It looks like the response object for the random post endpoint gives us a bunch of metadata and then the actual content of the quote. (this one is in question and answer format, as are a lot of them. Many of these quotes come from Q and A sessions with Brandon.)
