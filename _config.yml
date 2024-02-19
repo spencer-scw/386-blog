@@ -45,6 +45,7 @@ navigation:
     - title: About
       url: /about
 
-
+kramdown:  
+  parse_block_html: true
 
 

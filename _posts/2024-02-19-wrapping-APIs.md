@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Wrapping APIs"
-description: How to write a tool that wraps and extends an API in Python
+title: "Wrapping APIs"
+description: "How to write a tool that wraps and extends an API in Python"
 image: /assets/img/connections.jpg
 ---
 
