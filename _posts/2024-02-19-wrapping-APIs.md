@@ -34,14 +34,14 @@ Each of these endpoints are used for different purposes, some of them internal t
 Let's take a look at what we get when we use the `/random_post` endpoint:
 
 
-```bash
+```
 curl https://wob.coppermind.net/api/random_entry/?format=json
 ```
 
 returns
 
 
-```json
+```
 {
     "id":8128,
     "event":171,
@@ -70,7 +70,7 @@ There's just one main problem though: It looks like we've still got to deal with
 
 I decided to write my wrapper in python. I'm going to use two external libraries: `beautifulsoup` and `requests`. The first thing to do is import the packages:
 
-```python
+```
 import requests
 import sys
 from bs4 import BeautifulSoup
@@ -78,7 +78,7 @@ from bs4 import BeautifulSoup
 
 We'll need to poll the API using requests:
 
-```python
+```
 r = requests.get('https://wob.coppermind.net/api/random_entry/?format=json')
 ```
 
@@ -86,7 +86,7 @@ And finally we can use `beautifulsoup` to clean up those HTML tags.
 
 I've written two different forms of output. One is just the plain text: we grab the `["lines"]` object from the JSON and print it to the terminal:
 
-```python
+```
 text_lines = [line for line in r.json()["lines"]]
     for line in text_lines:
         soup = BeautifulSoup(line["text"], 'html.parser')
