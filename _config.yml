@@ -34,7 +34,7 @@ permalink: blog/:title/
 sass:
     style: compressed
 
-markdown: kramdown
+markdown: GFM
 highlighter: rouge
 plugins: [jekyll-paginate]
 paginate: 5
@@ -44,8 +44,5 @@ navigation:
       url: /index.html
     - title: About
       url: /about
-
-kramdown:  
-  parse_block_html: true
 
 
