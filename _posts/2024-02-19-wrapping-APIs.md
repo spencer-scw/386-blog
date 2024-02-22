@@ -28,20 +28,20 @@ This API offers six different endpoints:
 6. /random_entry
 
 
-Each of these endpoints are used for different purposes, some of them internal to running the website. `/events` and `/upcoming_events` will show you events at which Brandon has spoken or will be speaking at. `/tags` is for getting quotes about certain topics. `/entry` is for getting specific entry ids, and `/search_entry` is for searching entries by keyword, tag, speaker, and date. The last one, `/random_post` is of particular interest to me as a data scientist, because I can use it to get a simple random sample of posts and create a dataset to analyze.
+Each of these endpoints are used for different purposes, some of them internal to running the website. /events and /upcoming_events will show you events at which Brandon has spoken or will be speaking at. /tags is for getting quotes about certain topics. /entry is for getting specific entry ids, and /search_entry is for searching entries by keyword, tag, speaker, and date. The last one, /random_post is of particular interest to me as a data scientist, because I can use it to get a simple random sample of posts and create a dataset to analyze.
 
 
-Let's take a look at what we get when we use the `/random_post` endpoint:
+Let's take a look at what we get when we use the /random_post endpoint:
 
 
-```
+```bash
 curl https://wob.coppermind.net/api/random_entry/?format=json
 ```
 
 returns
 
 
-```
+```json
 {
     "id":8128,
     "event":171,
@@ -56,21 +56,22 @@ returns
         {"speaker":"Questioner",
         "text":"<p>So, a Radiant's blade. When it takes other forms, does it take on any different properties? So, like, if Kaladin beat someone with the butt of his Sylspear, would it still do something in regards to the soul?</p>"},
         {"speaker":"Brandon Sanderson",
-        "text":"<p>Would he still hit the soul? That is theoretically possible to make happen. It requires a lot of work. That is theoretically possible.</p>"}],"note":""}
-
+        "text":"<p>Would he still hit the soul? That is theoretically possible to make happen. It requires a lot of work. That is theoretically possible.</p>"}],
+    "note":""
+}
 ```
 
 It looks like the response object for the random post endpoint gives us a bunch of metadata and then the actual content of the quote. (this one is in question and answer format, as are a lot of them. Many of these quotes come from Q and A sessions with Brandon.)
 
-There's just one main problem though: It looks like we've still got to deal with stray `<p>` and other HTML tags. Evidently whoever set up this API left them in there. For our purposes though, it would be nice if we could clean them up. That's where some webscraping skills come in handy.
+There's just one main problem though: It looks like we've still got to deal with stray \<p> and other HTML tags. Evidently whoever set up this API left them in there. For our purposes though, it would be nice if we could clean them up. That's where some webscraping skills come in handy.
 
 
 # Writing the Wrapper
 
 
-I decided to write my wrapper in python. I'm going to use two external libraries: `beautifulsoup` and `requests`. The first thing to do is import the packages:
+I decided to write my wrapper in python. I'm going to use two external libraries: beautifulsoup and requests. The first thing to do is import the packages:
 
-```
+```python
 import requests
 import sys
 from bs4 import BeautifulSoup
@@ -78,15 +79,15 @@ from bs4 import BeautifulSoup
 
 We'll need to poll the API using requests:
 
-```
+```python
 r = requests.get('https://wob.coppermind.net/api/random_entry/?format=json')
 ```
 
-And finally we can use `beautifulsoup` to clean up those HTML tags.
+And finally we can use beautifulsoup to clean up those HTML tags.
 
-I've written two different forms of output. One is just the plain text: we grab the `["lines"]` object from the JSON and print it to the terminal:
+I've written two different forms of output. One is just the plain text: we grab the ["lines"] object from the JSON and print it to the terminal:
 
-```
+```python
 text_lines = [line for line in r.json()["lines"]]
     for line in text_lines:
         soup = BeautifulSoup(line["text"], 'html.parser')
