@@ -8,7 +8,7 @@ image: /assets/img/connections.jpg
 <p class="intro"><span class="dropcap">A</span>PIs are very important tools for doing data science. The first step in doing any kind of statistical analysis is to collect the data. As data scientists, we need to be well versed in all of the methods for collecting and cleaning data. In this tutorial, I will walk through my process of taking an API for a database of transcripts and creating a command-line tool that allows you to collect data. As a bonus, it's a fun little command that I can use to customize my Linux terminal! </p>
 
 
-# First steps
+## First steps
 
 
 So, you've found an API you'd like to use. The first thing to do is to explore it and learn how it works. Does it have documentation? Is there a web interface that will help you to get familiar with the endpoints? What format does the data come in? Will it need cleaning?
@@ -19,19 +19,18 @@ For this tutorial I'll be using the [WOB api](https://wob.coppermind.net/api/). 
 
 This API offers six different endpoints:
 
-
-1. /events
-2. /upcoming_events
-3. /tags
-4. /entry
-5. /search_entry
-6. /random_entry
-
-
-Each of these endpoints are used for different purposes, some of them internal to running the website. /events and /upcoming_events will show you events at which Brandon has spoken or will be speaking at. /tags is for getting quotes about certain topics. /entry is for getting specific entry ids, and /search_entry is for searching entries by keyword, tag, speaker, and date. The last one, /random_post is of particular interest to me as a data scientist, because I can use it to get a simple random sample of posts and create a dataset to analyze.
+1. `/events`
+2. `/upcoming_events`
+3. `/tags`
+4. `/entry`
+5. `/search_entry`
+6. `/random_entry`
 
 
-Let's take a look at what we get when we use the /random_post endpoint:
+Each of these endpoints are used for different purposes, some of them internal to running the website. `/events` and `/upcoming_events` will show you events at which Brandon has spoken or will be speaking at. `/tags` is for getting quotes about certain topics. `/entry` is for getting specific entry ids, and `/search_entry` is for searching entries by keyword, tag, speaker, and date. The last one, `/random_post` is of particular interest to me as a data scientist, because I can use it to get a simple random sample of posts and create a dataset to analyze.
+
+
+Let's take a look at what we get when we use the `/random_post` endpoint:
 
 
 ```bash
@@ -54,9 +53,14 @@ returns
     "tags":["shardblades"],
     "lines":[
         {"speaker":"Questioner",
-        "text":"<p>So, a Radiant's blade. When it takes other forms, does it take on any different properties? So, like, if Kaladin beat someone with the butt of his Sylspear, would it still do something in regards to the soul?</p>"},
+        "text":"<p>So, a Radiant's blade. When it takes other forms, 
+        does it take on any different properties? So, like, 
+        if Kaladin beat someone with the butt of his Sylspear, 
+        would it still do something in regards to the soul?</p>"},
         {"speaker":"Brandon Sanderson",
-        "text":"<p>Would he still hit the soul? That is theoretically possible to make happen. It requires a lot of work. That is theoretically possible.</p>"}],
+        "text":"<p>Would he still hit the soul? 
+        That is theoretically possible to make happen. 
+        It requires a lot of work. That is theoretically possible.</p>"}],
     "note":""
 }
 ```
@@ -66,7 +70,7 @@ It looks like the response object for the random post endpoint gives us a bunch 
 There's just one main problem though: It looks like we've still got to deal with stray \<p> and other HTML tags. Evidently whoever set up this API left them in there. For our purposes though, it would be nice if we could clean them up. That's where some webscraping skills come in handy.
 
 
-# Writing the Wrapper
+## Writing the Wrapper
 
 
 I decided to write my wrapper in python. I'm going to use two external libraries: beautifulsoup and requests. The first thing to do is import the packages:
@@ -104,7 +108,7 @@ Brandon Sanderson: They actually do. So what is happening is Hemalurgy rips off 
 I've also written very similar code that returns a JSON object with the HTML tags cleaned. I plan to do some exploratory data analysis of a dataset I create with this API later on.
 
 
-# Conclusion
+## Conclusion
 
 
 It was a lot of fun for me to mess around with this API. I learned that it doesn't have very good documentation right now, so I'm actually writing some to contribute to the project. Every API is going to be different. This one happened to have the added challenge of the HTML tags in it that needed to be cleaned up. The key to making a good wrapper is to explore the functionality of the API, and make it easy to use the features that you're interested in.
