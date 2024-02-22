@@ -5,7 +5,7 @@ description: "How to write a tool that wraps and extends an API in Python"
 image: /assets/img/connections.jpg
 ---
 
-<p class="intro"><span class="dropcap">A</span>PIs are very important tools for doing data science. The first step in doing any kind of statistical analysis is to collect the data. As data scientists, we need to be well versed in all of the methods for collecting and cleaning data. In this tutorial, I will walk through my process of taking an API for a database of transcripts and creating a command-line tool that allows you to collect data. As a bonus, it's a fun little command that I can use to customize my Linux terminal!
+<p class="intro"><span class="dropcap">A</span>PIs are very important tools for doing data science. The first step in doing any kind of statistical analysis is to collect the data. As data scientists, we need to be well versed in all of the methods for collecting and cleaning data. In this tutorial, I will walk through my process of taking an API for a database of transcripts and creating a command-line tool that allows you to collect data. As a bonus, it's a fun little command that I can use to customize my Linux terminal! </p>
 
 
 # First steps
