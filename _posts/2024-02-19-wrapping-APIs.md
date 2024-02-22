@@ -20,15 +20,16 @@ For this tutorial I'll be using the [WOB api](https://wob.coppermind.net/api/). 
 This API offers six different endpoints:
 
 
-1.        `/events`
-2.        `/upcoming_events`
-3.        `/tags`
-4.        `/entry`
-5.        `/search_entry`
-6.        `/random_entry`
+1. /events
+2. /upcoming_events
+3. /tags
+4. /entry
+5. /search_entry
+6. /random_entry
 
 
 Each of these endpoints are used for different purposes, some of them internal to running the website. `/events` and `/upcoming_events` will show you events at which Brandon has spoken or will be speaking at. `/tags` is for getting quotes about certain topics. `/entry` is for getting specific entry ids, and `/search_entry` is for searching entries by keyword, tag, speaker, and date. The last one, `/random_post` is of particular interest to me as a data scientist, because I can use it to get a simple random sample of posts and create a dataset to analyze.
+
 
 Let's take a look at what we get when we use the `/random_post` endpoint:
 
