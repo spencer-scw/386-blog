@@ -19,7 +19,7 @@ The data I wanted to collect was available on Wikipedia. There is a seperate lis
 6.    [WiiU](https://en.wikipedia.org/wiki/List_of_best-selling_Wii_U_video_games)
 7.    [Switch](https://en.wikipedia.org/wiki/List_of_best-selling_Nintendo_Switch_video_games)
 
-![Screenshot of the Nintendo Switch List Article](/assets/img/2024-12-19-wrapping-APIs/image.png)
+![Screenshot of the Nintendo Switch List Article](/assets/img/2024-03-29-bestselling-nintendo-games/image.png)
 
 Right off the bat, one problem we might run into is that the columns are not consistently named or ordered in these tables. Another issue will be that some of the earlier consoles had sales reported in dollars, while the later consoles use are formatted in millions of dollars. We'll also want to add information to the data about which console the release was for. Altogether there are over 300 titles released for Nintendo consoles that sold more than a million copies. If we can get them all in the same dataset, there would be a lot of potential to examine them for patterns.
 
